@@ -4,7 +4,7 @@ var jade = require('jade'),
     _ = require('lodash'),
     wld;
 
-module.exports = function (app, logger) {
+module.exports = function (app, logger ,itemsOnPage) {
 
     wld = new (require('./lib/wld'))(logger);
 
@@ -13,8 +13,7 @@ module.exports = function (app, logger) {
     });
 
     app.get('/logs/:page', function(req, res) {
-        var page = req.params.page || 1,
-            itemsOnPage = 30;
+        var page = req.params.page || 1;
 
         wld.list({
             limit: itemsOnPage,
